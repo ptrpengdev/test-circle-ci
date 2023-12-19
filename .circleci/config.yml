@@ -26,6 +26,11 @@ jobs:
           name: Build 
           command: npm run build
       - run:
+          name: Create Hash
+          command: |
+            zip -r build.zip build
+            sha256sum build.zip > build/hash.txt
+      - run:
           name: Deploy to surge
           command: ./node_modules/.bin/surge --project ./build --domain $SURGE_URL
       - save_cache:
