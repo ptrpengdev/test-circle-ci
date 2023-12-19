@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 export function PersonScore() {
   const [name, setName] = useState<string | undefined>();
+  // eslint-disable-next-line
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -12,10 +13,10 @@ export function PersonScore() {
     //   console.log(person);
     // }
 
-    // getThePerson();
     getPerson().then((person) => {
       setLoading(false);
       setName(person.name);
+      console.log(person.name);
     });
   }, []);
   if (loading) {
