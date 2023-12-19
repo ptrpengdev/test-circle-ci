@@ -3,5 +3,5 @@ type Person = {
 };
 
 export function getPerson(): Promise<Person> {
-  return new Promise((resolve) => setTimeout(() => resolve({ name: 'Bob' }), 1000));
+  return new Promise((resolve) => setTimeout(() => resolve({ name: 'ABC' }), 1000));
 }
