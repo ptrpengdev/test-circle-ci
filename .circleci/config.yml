@@ -37,10 +37,11 @@ jobs:
           name: Export error log if failed
           command: |
             mkdir -p /tmp/err_logs
-            cp /root/.npm/_logs/*.log /tmp/err_logs
+            cp -r /home/circleci/.npm/_logs/* /tmp/err_logs
           when: on_fail
       - store_artifacts:
           path: /tmp/err_logs
+          when: on_fail
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths: 
