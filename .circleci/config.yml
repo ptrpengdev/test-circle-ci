@@ -37,7 +37,7 @@ jobs:
           name: Export error log if failed
           command: |
             mkdir -p /tmp/err_logs
-            cp /root/.npm/_logs/*.log /tmp/err_logs
+            cp /home/circleci/.npm/_logs/*.log /tmp/err_logs
           when: on_fail
       - store_artifacts:
           path: /tmp/err_logs
