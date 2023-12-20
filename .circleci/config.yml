@@ -33,6 +33,14 @@ jobs:
       - run:
           name: Deploy to surge
           command: ./node_modules/.bin/surge --project ./build --domain $SURGE_URL
+      - run: 
+          name: Export error log if failed
+          command: |
+            mkdir -p /tmp/err_logs
+            cp /root/.npm/_logs/* /tmp/err_logs
+          when: on_fail
+      - store_artifacts:
+          path: /tmp/err_logs
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths: 
