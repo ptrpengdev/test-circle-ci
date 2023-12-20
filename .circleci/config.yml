@@ -11,19 +11,19 @@ jobs:
     docker:
       - image: cimg/node:14.21.3
     resource_class: medium
-    
+
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1.1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Install dependecies
           command: npm install
       - run:
-          name: Build 
+          name: Build
           command: npm run build
       - run:
           name: Create Hash
@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Deploy to surge
           command: ./node_modules/.bin/surge --project ./build --domain $SURGE_URL
-      - run: 
+      - run:
           name: Export error log if failed
           command: |
             mkdir -p /tmp/err_logs
@@ -41,10 +41,9 @@ jobs:
           when: on_fail
       - store_artifacts:
           path: /tmp/err_logs
-          when: on_fail
       - save_cache:
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
-          paths: 
+          key: v1.1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
             - ./node_modules
 
 # Orchestrate jobs using workflows
