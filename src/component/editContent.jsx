@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const EditableButton = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [buttonText, setButtonText] = useState('Click me');
-  const [buttonColor, setButtonColor] = useState('#3498db'); // Initial color
+  // const [buttonColor, setButtonColor] = useState('#3498db'); // Initial color
 
   const handleButtonClick = () => {
     setIsEditing(true);
@@ -20,7 +20,7 @@ const EditableButton = () => {
   return (
     <button
       onClick={handleButtonClick}
-      style={{ backgroundColor: buttonColor }}
+      style={{ backgroundColor: '#3498db' }}
       contentEditable={isEditing}
       onInput={handleTextChange}
       onBlur={handleBlur}
