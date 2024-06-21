@@ -12,13 +12,6 @@ const EditableButton = () => {
   const handleTextChange = (e) => {
     setButtonText(e.target.innerText);
   };
-  // eslint-disable-next-line
-  const handleColorChange = () => {
-    const newColor = prompt('Enter a new color for the button:');
-    if (newColor) {
-      setButtonColor(newColor);
-    }
-  };
 
   const handleBlur = () => {
     setIsEditing(false);
