@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 export function PersonScore() {
   const [name, setName] = useState<string | undefined>();
   // eslint-disable-next-line
-  const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ export function PersonScore() {
     return (
       <div>
         <h3>
-          {name}, {score}
+          {name}
         </h3>
         <button>Add</button>
         <button>Subtract</button>
